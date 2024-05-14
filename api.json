@@ -1,0 +1,136 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Ecommerce Project API",
+      "description": "Java Spring Boot source code for an e-commerce backend system with a RESTful API.",
+      "version": "1.0.0",
+      "contact": {
+        "name": "tesnime ellabou",
+        "email": "tesnime328@gmail.com"
+      },
+      "license": {
+        "name": "Ashok Zarmariya"
+      }
+    },
+    "servers": [
+      
+      {
+        "url": "http://localhost:5454",
+        "description": "Local development server"
+      }
+    ],
+    "paths": {
+      "/api/cart_items/{cartItemId}": {
+        "put": {
+          "tags": ["cart-item-controller"],
+          "summary": "Update Cart Item",
+          "parameters": [
+            {
+              "name": "cartItemId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CartItem"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CartItem"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": ["cart-item-controller"],
+          "summary": "Delete Cart Item",
+          "parameters": [
+            {
+              "name": "cartItemId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ApiResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/cart/add": {
+        "put": {
+          "tags": ["cart-controller"],
+          "summary": "Add Item to Cart",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddItemRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ApiResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "CartItem": {
+          "type": "object",
+          "properties": {
+          }
+        },
+        "ApiResponse": {
+          "type": "object",
+          "properties": {
+          }
+        },
+        "AddItemRequest": {
+          "type": "object",
+          "properties": {
+          }
+        }
+      }
+    }
+  }
+  
